@@ -137,8 +137,8 @@ def eGMA_init(G, G_prev, previous_comm):
                 new_com_cnt += 1
                 node_com = new_com_cnt
             new_init[node] = node_com
-
     return new_init
+
 import os    
 def _weighted_majority_voting(new_nodes, G,previous_comm,rec=0):
     neighbors = {}
@@ -209,17 +209,6 @@ def NeGMA_init(G, G_prev, previous_comm,mod_th=MOD_TH):
     modcom = modularity_comm(new_init, G, weight='weight')
     badcom = get_bad_communities(prev_modcom, modcom, mod_th=mod_th)
 
-    # # Finalize initialization
-    # if len(badcom)>0:
-    #     new_com_cnt = max(previous_comm.values())
-    #     for node in badcom:
-    #         new_com_cnt += 1
-    #         node_com = new_com_cnt
-    #         new_init[node] = node_com
-    # # assert len(set(G1.nodes())-set(new_init.keys()))==0
-    # return new_init
-
-    # Finalize initialization
     if len(badcom)>0:
         new_com_cnt = max(previous_comm.values())+1
         new_init = dict()
@@ -259,10 +248,10 @@ def MutiTh_NeGMA_init(G, G_prev, previous_comm,mod_ths=[MOD_TH]):
     badcoms={}
     new_inits={}
     for th in mod_ths:
-        badcoms[th] = get_bad_communities(prev_modcom, modcom, mod_th=mod_th)
+        badcoms[th] = get_bad_communities(prev_modcom, modcom, mod_th=th)
         new_inits[th]=new_init.copy()
         # Finalize initialization
-        if len(badcom[th])>0:          
+        if len(badcoms[th])>0:          
             new_com_cnt = max(previous_comm.values())
             for node in badcoms[th]:
                 new_com_cnt += 1

@@ -8,6 +8,7 @@ import copy
 import json
 import numpy as np
 import traceback
+import os
  
 
 
@@ -149,8 +150,5 @@ for i,transformation in enumerate(tqdm(TRANSFORMATIONS)):
         dest=f'../results/reports/Single_run_details/partitions_{transformation}_mu{int(mu*100)}_it{NIT}.json'
     print(partitions)
     with open(dest, "w") as json_file:
-        def f(x):
-            print(x)
-            return int(x)
-        json.dump(partitions, json_file,default=lambda x: f(x))
+        json.dump(partitions, json_file,default=lambda x: int(x))
         
