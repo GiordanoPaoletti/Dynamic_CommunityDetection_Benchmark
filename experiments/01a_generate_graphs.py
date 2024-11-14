@@ -5,7 +5,6 @@ from multiprocessing import Pool, cpu_count
 from src.simulation import GraphMovementSimulation
 from tqdm import tqdm
 import os
- 
 
 
 
@@ -29,6 +28,9 @@ def wrapper_func(args):
 
 
 
+
+
+
 for transformation in TRANSFORMATIONS:
     
     sim_cnt = 1
@@ -40,6 +42,8 @@ for transformation in TRANSFORMATIONS:
     
     
     directory_path=f'../results/graphs/mu0{int(mu*10)}/{transformation}/'
+    if not os.path.exists(directory_path):
+        os.makedirs(directory_path)
     gname=f'{transformation}_mu0{int(mu*10)}'
     simulators = list()
     

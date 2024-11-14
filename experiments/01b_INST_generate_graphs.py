@@ -49,6 +49,8 @@ for transformation in TRANSFORMATIONS:
     
     
     directory_path=f'../results/graphs/mu0{int(mu*10)}/{transformation}/'
+    if not os.path.exists(directory_path):
+        os.makedirs(directory_path)
     gname=f'{transformation}_mu0{int(mu*10)}'
     simulators = list()
     

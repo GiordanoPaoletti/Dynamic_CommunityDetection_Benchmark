@@ -26,6 +26,11 @@ def wrapper_func(args):
     return run
 
 
+if not os.path.exists('../results/reports/Alpha_sensitivity/'):
+    os.makedirs('../results/reports/Alpha_sensitivity/')
+if not os.path.exists('../results/reports/Alpha_sensitivity/time/'):
+    os.makedirs('../results/reports/Alpha_sensitivity/time/')
+
 
 
 

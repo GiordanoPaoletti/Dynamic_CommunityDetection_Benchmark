@@ -45,7 +45,8 @@ def wrapper_func(args):
                              instant=instant,report=report)
     return run
 
-
+if not os.path.exists('../results/reports/'):
+    os.makedirs('../results/reports/')
 
 
 
@@ -104,8 +105,10 @@ for transformation in TRANSFORMATIONS:
               ]
     metrics = [pd.DataFrame(x, columns=columns) for x in results]
     metrics = pd.concat(metrics, axis=1)
+   
     # Save metrics
-    
+
+
     if report:
         
             
@@ -135,6 +138,9 @@ for transformation in TRANSFORMATIONS:
         
         
     else:
+        if not os.path.exists('../results/reports/time/'):
+            os.makedirs('../results/reports/time/')
+
     
         if instant:
             metrics.to_csv(

@@ -29,6 +29,11 @@ n_split=1
 mu = .2
 
 
+if not os.path.exists('../results/reports/Single_run_details/'):
+    os.makedirs('../results/reports/Single_run_details/')
+if not os.path.exists('../results/reports/Single_run_details/'):
+    os.makedirs('../results/reports/Single_run_details/')
+
 
 
 def wrapper_func(args):

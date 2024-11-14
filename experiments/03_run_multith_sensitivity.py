@@ -25,8 +25,10 @@ def wrapper_func(args):
     return run
 
 
-
-
+if not os.path.exists('../results/reports/Threshold_sensitivity/'):
+    os.makedirs('../results/reports/Threshold_sensitivity/')
+if not os.path.exists('../results/reports/Threshold_sensitivity/time/'):
+    os.makedirs('../results/reports/Threshold_sensitivity/time/')
 
 # for transformation in ['fragment', 'split', 'merge', 'add_nodes', 'remove_nodes', 'on_off_nodes', 'on_off_edges', 'shuffle_edges', 'remove_edges']:
 for transformation in TRANSFORMATIONS:

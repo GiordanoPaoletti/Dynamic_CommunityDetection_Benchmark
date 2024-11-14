@@ -30,11 +30,12 @@ from ..transformations import (
 class GraphMovementSimulation():
     def __init__(self, n=1000, t1=3, t2=1.5, mu=.2, seed=10, gname=None):
         # Generate base graph
+        self.seed = seed
         self.G_base,comm = generate_weighted_LFR_graph(nodes=n, 
                                                   tau1=t1, 
                                                   tau2=t2, 
                                                   mu=mu,
-                                                  seed=seed)
+                                                  seed=self.seed)
         
         # Handle isolated nodes and self loops.
         self.G_base.remove_edges_from(nx.selfloop_edges(self.G_base))
@@ -306,9 +307,6 @@ class GraphMovementSimulation():
 
                 elif transformation == 'add_nodes':
                     nodes_to_add, edges_to_add = add_nodes(G, self.node2com)
-                    if edges_to_add=='err':
-                        print(self.gname,'seed',seed,'step',i)
-                        raise "Error"
                     # Update the graph
                     G.add_nodes_from(nodes_to_add, attr='community')
                     G.add_edges_from(edges_to_add, attr='weight') 
