@@ -29,7 +29,6 @@ def wrapper_func(args):
 
 
 
-# for transformation in ['fragment', 'split', 'merge', 'add_nodes', 'remove_nodes', 'on_off_nodes', 'on_off_edges', 'shuffle_edges', 'remove_edges']:
 for transformation in TRANSFORMATIONS:
     
     sim_cnt = 1
